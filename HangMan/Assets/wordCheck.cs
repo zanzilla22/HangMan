@@ -7,17 +7,27 @@ using TMPro;
 
 public class wordCheck : MonoBehaviour
 {
+    public roundManagement roundManager;
     public player player;
     public Animator anim;
     public hangman hangman;
     public wordBank bank;
     public string chosenWord;
     public keyRegister keyRegister;
+    [HideInInspector]
+    public int hangParts = 0;
     List<char> valChars = new List<char>();
 
     public TextMeshProUGUI text;
     void Start()
     {
+        newStart();
+    }
+    public void newStart()
+    {
+        valChars = new List<char>();
+        hangParts = 0;
+        hangman.resetParts();
         anim.SetBool("isShown", true);
         string[] lines = File.ReadAllLines("customfiles/" + bank.filePath + ".txt");
         chosenWord = lines[UnityEngine.Random.Range(0, lines.Length - 1)];
@@ -91,10 +101,27 @@ public class wordCheck : MonoBehaviour
         if(!hasChar)
         {
             hangman.AddPart();
+            hangParts++;
+            if(hangParts == 6)
+            {
+                roundManager.Lose(chosenWord);
+            }
         } else
         {
             string blankedText = new String(modBlankChars.ToArray());
             text.text = blankedText;
+            bool k = false;
+            for (int i = 0; i < valChars.Count; i++)
+            {
+                if(valChars[i] == '_')
+                {
+                    k = true;
+                }
+            }
+            if(!k)
+            {
+                roundManager.Win();
+            }
         }
     }
 }

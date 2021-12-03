@@ -427,7 +427,7 @@ namespace TMPro
                     #if UNITY_2020_2_OR_NEWER
                     case RuntimePlatform.PS4:
                         #if !(UNITY_2020_2_1 || UNITY_2020_2_2)
-                        
+                        case RuntimePlatform.PS5:
                         #endif
                     #endif
                     case RuntimePlatform.Switch:
@@ -451,7 +451,7 @@ namespace TMPro
                     #if UNITY_2020_2_OR_NEWER
                     case RuntimePlatform.PS4:
                         #if !(UNITY_2020_2_1 || UNITY_2020_2_2)
-
+                        case RuntimePlatform.PS5:
                         #endif
                     #endif
                     case RuntimePlatform.Switch:
@@ -480,7 +480,7 @@ namespace TMPro
                 #if UNITY_2020_2_OR_NEWER
                 case RuntimePlatform.PS4:
                     #if !(UNITY_2020_2_1 || UNITY_2020_2_2)
-
+                    case RuntimePlatform.PS5:
                     #endif
                 #endif
                 case RuntimePlatform.Switch:

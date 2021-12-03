@@ -9,9 +9,9 @@ public class hangman : MonoBehaviour
     public int tally;
     void Start()
     {
-        Reset();
+        resetParts();
     }
-    public void Reset()
+    public void resetParts()
     {
         tally = 0;
         for (int i = 0; i < parts.Length; i++)
