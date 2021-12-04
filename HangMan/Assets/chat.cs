@@ -11,9 +11,13 @@ public class chat : MonoBehaviour
     public player player;
     public GameObject inputField;
     int offset = 0;
+    public bool singlePlayer;
     void Awake()
     {
-        inputField.GetComponent<TMP_InputField>().characterLimit = 45;
+        if(!singlePlayer)
+        {
+            inputField.GetComponent<TMP_InputField>().characterLimit = 45;
+        }
     }
     public void SendAMessage()
     {

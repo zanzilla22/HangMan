@@ -7,6 +7,7 @@ using TMPro;
 
 public class wordCheck : MonoBehaviour
 {
+    public bool multiplayer;
     public roundManagement roundManager;
     public player player;
     public Animator anim;
@@ -19,16 +20,16 @@ public class wordCheck : MonoBehaviour
     List<char> valChars = new List<char>();
 
     public TextMeshProUGUI text;
-    void Start()
-    {
-        newStart();
-    }
+    //void Start()
+    //{
+    //    newStart();
+    //}
     public void newStart()
     {
         valChars = new List<char>();
         hangParts = 0;
         hangman.resetParts();
-        anim.SetBool("isShown", true);
+        anim.SetBool((multiplayer ? "isShownMultiplayer" : "isShown"), true);
         string[] lines = File.ReadAllLines("customfiles/" + bank.filePath + ".txt");
         chosenWord = lines[UnityEngine.Random.Range(0, lines.Length - 1)];
 
